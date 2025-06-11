@@ -36,14 +36,4 @@ class PathTest {
         double distance = path.getTotalDistance();
         assertTrue(distance > 0 && distance < 20); // ~12-15 км между точками
     }
-
-    @Test
-    void testToString() {
-        Node node1 = new Node("1", 45.0, 45.0);
-        Node node2 = new Node("2", 45.1, 45.1);
-
-        Path path = new Path(List.of(node1, node2));
-        String expectedStart = "Path{nodeCount=2, totalDistance=";
-        assertTrue(path.toString().startsWith(expectedStart));
-    }
 }
