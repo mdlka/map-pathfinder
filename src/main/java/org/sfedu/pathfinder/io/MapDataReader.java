@@ -10,5 +10,6 @@ public interface MapDataReader {
         Vehicle,
         Pedestrian
     }
+
     Graph readGraph(RoadsType roadsType, InputStream inputStream) throws IOException;
 }
