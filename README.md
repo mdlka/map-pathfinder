@@ -69,7 +69,7 @@ Map Pathfinder - это Java-приложение для поиска оптим
 
 ## Использование
 
-1. Подготовьте файл карты в формате OSM (OpenStreetMap) (карта Ростова-на-Дону доступна по ссылке https://disk.yandex.ru/d/tZpHbOmmSeBC3A)
+1. Подготовьте файл карты в формате OSM (OpenStreetMap) ([карта Ростова-на-Дону](https://disk.yandex.ru/d/tZpHbOmmSeBC3A))
 2. Запустите приложение:
 ```bash
 java -jar map-pathfinder-1.0.jar
