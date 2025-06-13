@@ -20,7 +20,11 @@ public class OSMDataReader implements MapDataReader {
 
     private static final Set<String> PEDESTRIAN_HIGHWAY_TYPES = Set.of(
             "footway", "path", "pedestrian", "steps", "bridleway", "corridor", "via_ferrata", "sidewalk",
-            "crossing", "traffic_island", "cycleway"
+            "crossing", "traffic_island", "cycleway", "track", "elevator", "escalator", "service", "living_street",
+            "residential", "unclassified", "road", "platform", "proposed", "construction", "bus_stop", "rest_area",
+            "emergency_bay", "abandoned", "razed", "historic", "disused", "motorway", "trunk", "primary", "secondary",
+            "tertiary", "motorway_link", "trunk_link", "primary_link", "secondary_link", "tertiary_link",
+            "give_way", "mini_roundabout"
     );
 
     @Override

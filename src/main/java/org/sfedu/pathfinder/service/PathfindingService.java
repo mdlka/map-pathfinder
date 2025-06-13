@@ -3,6 +3,7 @@ package org.sfedu.pathfinder.service;
 import org.sfedu.pathfinder.algorithm.Path;
 import org.sfedu.pathfinder.algorithm.PathfindingAlgorithm;
 import org.sfedu.pathfinder.io.MapDataReader;
+import org.sfedu.pathfinder.io.RoadsType;
 import org.sfedu.pathfinder.model.Graph;
 import org.sfedu.pathfinder.model.Node;
 import org.sfedu.pathfinder.utils.GraphUtils;
@@ -21,8 +22,8 @@ public class PathfindingService {
         this.algorithm = algorithm;
     }
 
-    public void loadGraph(MapDataReader mapDataReader, InputStream is) throws IOException {
-        this.graph = mapDataReader.readGraph(MapDataReader.RoadsType.Vehicle, is);
+    public void loadGraph(MapDataReader mapDataReader, RoadsType roadsType, InputStream is) throws IOException {
+        this.graph = mapDataReader.readGraph(roadsType, is);
         System.out.println("Graph loaded. Nodes: " + graph.getNodeCount() + ", Edges: " + graph.getEdgeCount());
 
         removeExtraComponents();

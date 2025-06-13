@@ -3,17 +3,18 @@ package org.sfedu.pathfinder;
 import org.sfedu.pathfinder.algorithm.AStarAlgorithm;
 import org.sfedu.pathfinder.io.GeoJsonExporter;
 import org.sfedu.pathfinder.io.OSMDataReader;
+import org.sfedu.pathfinder.io.RoadsType;
 import org.sfedu.pathfinder.service.PathfindingService;
 
 public class Main {
     public static void main(String[] args) {
         try {
             var service = new PathfindingService(new AStarAlgorithm());
-            service.loadGraph(new OSMDataReader(), Main.class.getResourceAsStream("/map.xml"));
+            service.loadGraph(new OSMDataReader(), RoadsType.Pedestrian, Main.class.getResourceAsStream("/map.xml"));
 
             var path = service.findPath(
-                    47.2043, 39.6303,
-                    47.2090, 39.6460
+                    47.20871377101845, 39.62857697262525,
+                    47.265546620621464, 39.87561805519811
             );
 
             GeoJsonExporter.exportGraphToGeoJson(service.getGraph(), "graph.geojson");
