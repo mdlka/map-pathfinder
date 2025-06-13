@@ -24,8 +24,6 @@ public class PathfindingService {
 
     public void loadGraph(MapDataReader mapDataReader, RoadsType roadsType, InputStream is) throws IOException {
         this.graph = mapDataReader.readGraph(roadsType, is);
-        System.out.println("Graph loaded. Nodes: " + graph.getNodeCount() + ", Edges: " + graph.getEdgeCount());
-
         removeExtraComponents();
     }
 
@@ -39,9 +37,6 @@ public class PathfindingService {
         if (start == null || target == null)
             return new Path(List.of());
 
-        System.out.println("Is reachable - " + GraphUtils.isReachable(graph, start, target));
-        System.out.println("Finding path from " + start + " to " + target);
-
         return algorithm.findShortestPath(graph, start, target);
     }
 
@@ -51,8 +46,6 @@ public class PathfindingService {
 
     private void removeExtraComponents() {
         List<Set<Node>> components = GraphUtils.findComponents(graph);
-        System.out.println("Components count - " + components.size());
-
         int maxIndex = findComponentIndexWithMaxSize(components);
 
         for (int i = 0; i < components.size(); i++) {
@@ -62,9 +55,6 @@ public class PathfindingService {
             for (Node node : components.get(i))
                 graph.removeNodeById(node.id());
         }
-
-        System.out.println("Components count - " + GraphUtils.findComponents(graph).size());
-        System.out.println("Graph cleaned. Nodes: " + graph.getNodeCount() + ", Edges: " + graph.getEdgeCount());
     }
 
     private static int findComponentIndexWithMaxSize(List<Set<Node>> components) {
