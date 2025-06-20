@@ -2,12 +2,11 @@ package org.sfedu.pathfinder.io;
 
 import org.sfedu.pathfinder.model.Graph;
 import org.sfedu.pathfinder.model.Node;
-import org.sfedu.pathfinder.algorithm.Path;
+import org.sfedu.pathfinder.model.Path;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class GeoJsonExporter {
 
@@ -42,20 +41,18 @@ public class GeoJsonExporter {
         writer.write("  \"type\": \"FeatureCollection\",\n");
         writer.write("  \"features\": [\n");
 
-        List<Node> nodes = path.nodes();
-
-        for (int i = 0; i < nodes.size() - 1; i++) {
+        for (int i = 0; i < path.size() - 1; i++) {
             if (i > 0)
                 writer.write(",\n");
 
-            writeLineString(writer, nodes.get(i), nodes.get(i + 1));
+            writeLineString(writer, path.getNode(i), path.getNode(i + 1));
         }
 
-        if (!nodes.isEmpty()) {
+        if (!path.isEmpty()) {
             writer.write(",\n");
-            writePoint(writer, nodes.get(0), "Start", "#3b7a1d"); // зеленый
+            writePoint(writer, path.getNode(0), "Start", "#3b7a1d"); // зеленый
             writer.write(",\n");
-            writePoint(writer, nodes.get(nodes.size() - 1), "End", "#e6194b"); // красный
+            writePoint(writer, path.getNode(path.size() - 1), "End", "#e6194b"); // красный
         }
 
         writer.write("\n  ]\n");

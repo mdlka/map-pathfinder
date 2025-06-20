@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.sfedu.pathfinder.model.Graph;
 import org.sfedu.pathfinder.model.Node;
 import org.sfedu.pathfinder.model.Edge;
+import org.sfedu.pathfinder.model.Path;
 
 import java.util.List;
 
@@ -33,11 +34,10 @@ class AStarAlgorithmTest {
 
         assertNotNull(path);
         assertFalse(path.isEmpty());
-        List<Node> nodes = path.nodes();
-        assertEquals(3, nodes.size());
-        assertEquals(a, nodes.get(0));
-        assertEquals(B, nodes.get(1));
-        assertEquals(C, nodes.get(2));
+        assertEquals(3, path.size());
+        assertEquals(a, path.getNode(0));
+        assertEquals(B, path.getNode(1));
+        assertEquals(C, path.getNode(2));
     }
 
     @Test
@@ -68,8 +68,8 @@ class AStarAlgorithmTest {
 
         assertNotNull(path);
         assertFalse(path.isEmpty());
-        assertEquals(1, path.nodes().size());
-        assertEquals(A, path.nodes().get(0));
+        assertEquals(1, path.size());
+        assertEquals(A, path.getNode(0));
     }
 
     @Test
@@ -96,12 +96,11 @@ class AStarAlgorithmTest {
         assertNotNull(path);
         assertFalse(path.isEmpty());
 
-        List<Node> nodes = path.nodes();
-        assertEquals(4, nodes.size(), "Ожидался путь из 4 узлов: A → B → C → D");
+        assertEquals(4, path.size(), "Ожидался путь из 4 узлов: A → B → C → D");
 
-        assertEquals(A, nodes.get(0));
-        assertEquals(B, nodes.get(1));
-        assertEquals(C, nodes.get(2));
-        assertEquals(D, nodes.get(3));
+        assertEquals(A, path.getNode(0));
+        assertEquals(B, path.getNode(1));
+        assertEquals(C, path.getNode(2));
+        assertEquals(D, path.getNode(3));
     }
 }

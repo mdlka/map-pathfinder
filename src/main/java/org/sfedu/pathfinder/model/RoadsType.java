@@ -1,4 +1,4 @@
-package org.sfedu.pathfinder.io;
+package org.sfedu.pathfinder.model;
 
 public enum RoadsType {
     Vehicle,

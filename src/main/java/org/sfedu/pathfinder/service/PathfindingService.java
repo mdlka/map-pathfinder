@@ -1,9 +1,9 @@
 package org.sfedu.pathfinder.service;
 
-import org.sfedu.pathfinder.algorithm.Path;
+import org.sfedu.pathfinder.model.Path;
 import org.sfedu.pathfinder.algorithm.PathfindingAlgorithm;
 import org.sfedu.pathfinder.io.MapDataReader;
-import org.sfedu.pathfinder.io.RoadsType;
+import org.sfedu.pathfinder.model.RoadsType;
 import org.sfedu.pathfinder.model.Graph;
 import org.sfedu.pathfinder.model.Node;
 import org.sfedu.pathfinder.utils.GraphUtils;

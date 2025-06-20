@@ -3,7 +3,8 @@ package org.sfedu.pathfinder;
 import org.sfedu.pathfinder.algorithm.AStarAlgorithm;
 import org.sfedu.pathfinder.io.GeoJsonExporter;
 import org.sfedu.pathfinder.io.OSMDataReader;
-import org.sfedu.pathfinder.io.RoadsType;
+import org.sfedu.pathfinder.model.Node;
+import org.sfedu.pathfinder.model.RoadsType;
 import org.sfedu.pathfinder.service.PathfindingService;
 
 import javax.swing.*;

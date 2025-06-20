@@ -2,6 +2,7 @@ package org.sfedu.pathfinder.algorithm;
 
 import org.junit.jupiter.api.Test;
 import org.sfedu.pathfinder.model.Node;
+import org.sfedu.pathfinder.model.Path;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ class PathTest {
         Path path = new Path(List.of(node1, node2));
 
         assertFalse(path.isEmpty());
-        assertEquals(2, path.nodes().size());
+        assertEquals(2, path.size());
         double distance = path.getTotalDistance();
         assertTrue(distance > 0 && distance < 20); // ~12-15 км между точками
     }
