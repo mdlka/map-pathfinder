@@ -7,8 +7,8 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class OSMDataReader implements MapDataReader {
@@ -28,9 +28,10 @@ public class OSMDataReader implements MapDataReader {
     );
 
     @Override
-    public Graph readGraph(RoadsType roadsType, InputStream inputStream) throws IOException {
+    public Graph readGraph(String filePath, RoadsType roadsType) throws IOException {
         var graph = new Graph();
         var nodes = new HashMap<String, Node>();
+        var inputStream = new FileInputStream(filePath);
 
         try {
             XMLInputFactory factory = XMLInputFactory.newInstance();

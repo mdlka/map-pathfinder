@@ -9,21 +9,22 @@ import org.sfedu.pathfinder.model.Node;
 import org.sfedu.pathfinder.utils.GraphUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class PathfindingService {
     private static final double MAX_NODE_SEARCH_RADIUS_IN_METERS = 50;
 
+    private final MapDataReader mapDataReader;
     private final PathfindingAlgorithm algorithm;
     private Graph graph;
 
-    public PathfindingService(PathfindingAlgorithm algorithm) {
+    public PathfindingService(MapDataReader mapDataReader, PathfindingAlgorithm algorithm) {
+        this.mapDataReader = mapDataReader;
         this.algorithm = algorithm;
     }
 
-    public void loadGraph(MapDataReader mapDataReader, RoadsType roadsType, InputStream is) throws IOException {
-        this.graph = mapDataReader.readGraph(roadsType, is);
+    public void loadGraph(String filePath, RoadsType roadsType) throws IOException {
+        this.graph = mapDataReader.readGraph(filePath, roadsType);
         removeExtraComponents();
     }
 

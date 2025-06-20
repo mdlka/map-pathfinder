@@ -3,13 +3,11 @@ package org.sfedu.pathfinder;
 import org.sfedu.pathfinder.algorithm.AStarAlgorithm;
 import org.sfedu.pathfinder.io.GeoJsonExporter;
 import org.sfedu.pathfinder.io.OSMDataReader;
-import org.sfedu.pathfinder.model.Node;
 import org.sfedu.pathfinder.model.RoadsType;
 import org.sfedu.pathfinder.service.PathfindingService;
 
 import javax.swing.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.Scanner;
 
 public class Main {
@@ -24,7 +22,7 @@ public class Main {
     private static final double MAX_LON = 180.0;
 
     public static void main(String[] args) {
-        service = new PathfindingService(new AStarAlgorithm());
+        service = new PathfindingService(new OSMDataReader(), new AStarAlgorithm());
         
         while (true) {
             clearConsole();
@@ -227,7 +225,7 @@ public class Main {
                 clearConsole();
                 System.out.println("=== Загрузка графа ===");
                 System.out.println("Загружаем граф из файла...");
-                service.loadGraph(new OSMDataReader(), currentRoadsType, new FileInputStream(file));
+                service.loadGraph(currentFilePath, currentRoadsType);
                 showErrorAndWait("Граф успешно загружен");
             }
         } catch (Exception e) {
@@ -248,7 +246,7 @@ public class Main {
                 System.out.println("=== Обновление типа дорог ===");
                 System.out.println("Перезагружаем граф с новым типом дорог...");
                 currentRoadsType = newType;
-                service.loadGraph(new OSMDataReader(), currentRoadsType, new FileInputStream(currentFilePath));
+                service.loadGraph(currentFilePath, currentRoadsType);
                 showErrorAndWait("Граф успешно перезагружен с новым типом дорог");
             }
         } catch (Exception e) {
